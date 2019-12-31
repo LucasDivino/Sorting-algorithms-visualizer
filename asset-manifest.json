@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/Sorting-algorithms-visualizer/static/js/main.abb94c1a.chunk.js",
-    "main.js.map": "/Sorting-algorithms-visualizer/static/js/main.abb94c1a.chunk.js.map",
+    "main.js": "/Sorting-algorithms-visualizer/static/js/main.19d62c18.chunk.js",
+    "main.js.map": "/Sorting-algorithms-visualizer/static/js/main.19d62c18.chunk.js.map",
     "runtime-main.js": "/Sorting-algorithms-visualizer/static/js/runtime-main.a351dd8d.js",
     "runtime-main.js.map": "/Sorting-algorithms-visualizer/static/js/runtime-main.a351dd8d.js.map",
-    "static/js/2.5690d9a7.chunk.js": "/Sorting-algorithms-visualizer/static/js/2.5690d9a7.chunk.js",
-    "static/js/2.5690d9a7.chunk.js.map": "/Sorting-algorithms-visualizer/static/js/2.5690d9a7.chunk.js.map",
+    "static/js/2.bed8435a.chunk.js": "/Sorting-algorithms-visualizer/static/js/2.bed8435a.chunk.js",
+    "static/js/2.bed8435a.chunk.js.map": "/Sorting-algorithms-visualizer/static/js/2.bed8435a.chunk.js.map",
     "index.html": "/Sorting-algorithms-visualizer/index.html",
-    "precache-manifest.db518aaab34c0162f186ff180a5a13da.js": "/Sorting-algorithms-visualizer/precache-manifest.db518aaab34c0162f186ff180a5a13da.js",
+    "precache-manifest.f26edafa29fde61f49bc2d72d96b1a86.js": "/Sorting-algorithms-visualizer/precache-manifest.f26edafa29fde61f49bc2d72d96b1a86.js",
     "service-worker.js": "/Sorting-algorithms-visualizer/service-worker.js",
-    "static/js/2.5690d9a7.chunk.js.LICENSE": "/Sorting-algorithms-visualizer/static/js/2.5690d9a7.chunk.js.LICENSE"
+    "static/js/2.bed8435a.chunk.js.LICENSE": "/Sorting-algorithms-visualizer/static/js/2.bed8435a.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.a351dd8d.js",
-    "static/js/2.5690d9a7.chunk.js",
-    "static/js/main.abb94c1a.chunk.js"
+    "static/js/2.bed8435a.chunk.js",
+    "static/js/main.19d62c18.chunk.js"
   ]
 }
