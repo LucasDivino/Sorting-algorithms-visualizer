@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import getMergeSortAnimations from '../../SortingAlgotithms/mergesort';
 import getBubbleSortAnimations from '../../SortingAlgotithms/bubblesort';
 import getQuickSortAnimations from '../../SortingAlgotithms/quicksort';
+import getHeapSortAnimations from '../../SortingAlgotithms/heapsort';
 
 const PRIMARY_COLOR = '#408050';
 
@@ -98,7 +99,38 @@ function SortingVizualizer(props) {
 
   function AnimateQuickSort() {
     const animations = getQuickSortAnimations(array);
-    console.log(animations);
+    for (let i = 0; i < animations.length; i += 1) {
+      const arrayBars = document.getElementsByClassName(classes.arrayElement);
+      if (animations[i].operation === 'change-color') {
+        const [barOneIndex, barTwoIndex] = animations[i].positions;
+        const barOneStyle = arrayBars[barOneIndex].style;
+        const barTwoStyle = arrayBars[barTwoIndex].style;
+        setTimeout(() => {
+          barOneStyle.backgroundColor = SECONDARY_COLOR;
+          barTwoStyle.backgroundColor = SECONDARY_COLOR;
+        }, i * speed);
+      }
+      if (animations[i].operation === 'revert-color') {
+        const [barOneIndex, barTwoIndex] = animations[i].positions;
+        const barOneStyle = arrayBars[barOneIndex].style;
+        const barTwoStyle = arrayBars[barTwoIndex].style;
+        setTimeout(() => {
+          barOneStyle.backgroundColor = PRIMARY_COLOR;
+          barTwoStyle.backgroundColor = PRIMARY_COLOR;
+        }, i * speed);
+      }
+      if (animations[i].operation === 'swap') {
+        setTimeout(() => {
+          const [barOneIndex, newHeight] = animations[i].positions;
+          const barOneStyle = arrayBars[barOneIndex].style;
+          barOneStyle.height = `${newHeight / 1.4}px`;
+        }, i * speed);
+      }
+    }
+  }
+
+  function AnimateHeapSort() {
+    const animations = getHeapSortAnimations(array);
     for (let i = 0; i < animations.length; i += 1) {
       const arrayBars = document.getElementsByClassName(classes.arrayElement);
       if (animations[i].operation === 'change-color') {
@@ -165,6 +197,15 @@ function SortingVizualizer(props) {
           onClick={AnimateQuickSort}
         >
           quicksort
+        </Button>
+
+        <Button
+          className={classes.buttonSpacing}
+          variant="contained"
+          color="primary"
+          onClick={AnimateHeapSort}
+        >
+          heapsort
         </Button>
       </Box>
     </>

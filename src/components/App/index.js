@@ -42,7 +42,7 @@ class personalizedAppBar extends React.Component {
     super(props);
     this.state = {
       speed: 1,
-      arraySize: 600,
+      arraySize: 250,
       array: []
     };
   }
