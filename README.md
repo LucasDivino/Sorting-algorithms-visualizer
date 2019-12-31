@@ -9,8 +9,8 @@ An app to visualize how the some sorting algorithms works
 ### Run 
 
 ```
-$ git 
-$ cd 
+$ git clone https://github.com/LucasDivino/Sorting-algorithms-visualizer.git
+$ cd ./Sorting-algorithms-visualizer
 $ npm install
 $ npm start
 ```
