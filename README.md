@@ -15,3 +15,5 @@ $ npm install
 $ npm start
 ```
 
+**obs**: some new algorithms will still be implemented
+
