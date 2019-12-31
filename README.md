@@ -1,7 +1,7 @@
 ### Sorting algorithms visualizer
 
-An app to visualize how the some sorting algorithms works 
-You can access it here : https://divino.dev/Sorting-algorithms-visualizer/
+An app to visualize how the some sorting algorithms works  
+You can access it here : https://divino.dev/Sorting-algorithms-visualizer/  
 I hope you enjoy playing with it :)
 
 ### technologies
