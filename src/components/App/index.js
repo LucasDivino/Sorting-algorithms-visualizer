@@ -7,6 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+// redux
+import { connect } from 'react-redux';
+// assets
 import SortingVisualizer from '../SortingVisualizer';
 
 const styles = theme => ({
@@ -37,7 +40,7 @@ const styles = theme => ({
   }
 });
 
-class personalizedAppBar extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -108,6 +111,7 @@ class personalizedAppBar extends React.Component {
                 onClick={() => this.resetArray()}
                 variant="contained"
                 color="secondary"
+                disabled={this.props.isRunning}
               >
                 reset
               </Button>
@@ -120,4 +124,8 @@ class personalizedAppBar extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(personalizedAppBar);
+const mapStateTopProps = state => ({
+  isRunning: state.animationRunning
+});
+
+export default withStyles(styles, { withTheme: true })(connect(mapStateTopProps)(App));

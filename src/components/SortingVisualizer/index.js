@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+// redux
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Creators as actions } from '../../Store/Ducks/animationRunning';
+// sorting algorithms
 import getMergeSortAnimations from '../../SortingAlgotithms/mergesort';
 import getBubbleSortAnimations from '../../SortingAlgotithms/bubblesort';
 import getQuickSortAnimations from '../../SortingAlgotithms/quicksort';
@@ -36,43 +41,41 @@ const styles = () => ({
   }
 });
 
-function SortingVizualizer(props) {
+function SortingVisualizer(props) {
   const { classes } = props;
   const { speed } = props;
   const { array } = props;
-  const [isRunning, setIsRunning] = useState(false);
 
-  function animate(animations) {
-    setIsRunning(true);
-    for (let i = 0; i < animations.length; i += 1) {
+  function delay(ms) {
+    return new Promise(resolve => {
+      setTimeout(resolve, ms);
+    });
+  }
+
+  async function animate(animations) {
+    props.setIsRunning(true);
+    const promises = animations.map(async (element, index) => {
       const arrayBars = document.getElementsByClassName(classes.arrayElement);
-      if (animations[i].operation === 'change-color') {
-        const [barOneIndex, barTwoIndex] = animations[i].positions;
-        const barOneStyle = arrayBars[barOneIndex].style;
-        const barTwoStyle = arrayBars[barTwoIndex].style;
-        setTimeout(() => {
-          barOneStyle.backgroundColor = SECONDARY_COLOR;
-          barTwoStyle.backgroundColor = SECONDARY_COLOR;
-        }, i * speed);
-      }
-      if (animations[i].operation === 'revert-color') {
-        const [barOneIndex, barTwoIndex] = animations[i].positions;
-        const barOneStyle = arrayBars[barOneIndex].style;
-        const barTwoStyle = arrayBars[barTwoIndex].style;
-        setTimeout(() => {
-          barOneStyle.backgroundColor = PRIMARY_COLOR;
-          barTwoStyle.backgroundColor = PRIMARY_COLOR;
-        }, i * speed);
-      }
-      if (animations[i].operation === 'swap') {
-        setTimeout(() => {
-          const [barOneIndex, newHeight] = animations[i].positions;
-          const barOneStyle = arrayBars[barOneIndex].style;
-          barOneStyle.height = `${newHeight / 1.4}px`;
-        }, i * speed);
-      }
-    }
-    setIsRunning(false);
+      return delay(index * speed).then(() => {
+        const [barOneIndex, barTwoIndex] = element.positions;
+        switch (element.operation) {
+          case 'change-color':
+            arrayBars[barOneIndex].style.backgroundColor = SECONDARY_COLOR;
+            arrayBars[barTwoIndex].style.backgroundColor = SECONDARY_COLOR;
+            break;
+          case 'revert-color':
+            arrayBars[barOneIndex].style.backgroundColor = PRIMARY_COLOR;
+            arrayBars[barTwoIndex].style.backgroundColor = PRIMARY_COLOR;
+            break;
+          case 'swap':
+            arrayBars[barOneIndex].style.height = `${barTwoIndex / 1.4}px`;
+            break;
+          default:
+        }
+      });
+    });
+    await Promise.all(promises);
+    props.setIsRunning(false);
   }
 
   function AnimateMergesort() {
@@ -109,7 +112,7 @@ function SortingVizualizer(props) {
       </Box>
       <Box className={classes.buttonsBar}>
         <Button
-          disabled={isRunning}
+          disabled={props.isRunning}
           className={classes.buttonSpacing}
           variant="contained"
           color="primary"
@@ -118,7 +121,7 @@ function SortingVizualizer(props) {
           MergeSort
         </Button>
         <Button
-          disabled={isRunning}
+          disabled={props.isRunning}
           variant="contained"
           className={classes.buttonSpacing}
           color="primary"
@@ -127,7 +130,7 @@ function SortingVizualizer(props) {
           BubbleSort
         </Button>
         <Button
-          disabled={isRunning}
+          disabled={props.isRunning}
           className={classes.buttonSpacing}
           variant="contained"
           color="primary"
@@ -137,7 +140,7 @@ function SortingVizualizer(props) {
         </Button>
 
         <Button
-          disabled={isRunning}
+          disabled={props.isRunning}
           className={classes.buttonSpacing}
           variant="contained"
           color="primary"
@@ -150,4 +153,12 @@ function SortingVizualizer(props) {
   );
 }
 
-export default withStyles(styles, { withTheme: true })(SortingVizualizer);
+const mapStateTopProps = state => ({
+  isRunning: state.animationRunning
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+
+export default withStyles(styles, { withTheme: true })(
+  connect(mapStateTopProps, mapDispatchToProps)(SortingVisualizer)
+);
