@@ -39,13 +39,30 @@ const styles = theme => ({
   }
 });
 
+function setMax() {
+  const screenSize = window.innerWidth;
+  switch (true) {
+    case screenSize > 1000:
+      return 250;
+    case screenSize < 1000 && screenSize > 700:
+      return 150;
+    case screenSize < 700 && screenSize > 400:
+      return 100;
+    case screenSize < 400:
+      return 50;
+    default:
+      return 250;
+  }
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       speed: 1,
-      arraySize: 250,
-      array: []
+      arraySize: setMax(),
+      array: [],
+      arrayMax: setMax()
     };
   }
 
@@ -55,7 +72,7 @@ class App extends React.Component {
 
   handleSliderChange(value, prop) {
     if (prop === 'speed') {
-      value = 100 - value;
+      value = 30 - value;
     }
     this.setState({ [prop]: value });
   }
@@ -89,9 +106,9 @@ class App extends React.Component {
                 min={4}
                 className={classes.slider}
                 onChange={(e, value) => this.handleSliderChange(value, 'arraySize')}
-                max={250}
+                max={this.state.arrayMax}
                 color="secondary"
-                defaultValue={250}
+                defaultValue={this.state.arrayMax}
               />
             </Box>
             <Box className={classes.sliderBox}>
@@ -99,9 +116,9 @@ class App extends React.Component {
               <Slider
                 onChange={(e, value) => this.handleSliderChange(value, 'speed')}
                 className={classes.slider}
-                max={100}
+                max={30}
                 color="secondary"
-                defaultValue={100}
+                defaultValue={30}
               />
             </Box>
             <Button
