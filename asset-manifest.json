@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/Sorting-algorithms-visualizer/static/js/main.1f00f729.chunk.js",
-    "main.js.map": "/Sorting-algorithms-visualizer/static/js/main.1f00f729.chunk.js.map",
+    "main.js": "/Sorting-algorithms-visualizer/static/js/main.3cf28e86.chunk.js",
+    "main.js.map": "/Sorting-algorithms-visualizer/static/js/main.3cf28e86.chunk.js.map",
     "runtime-main.js": "/Sorting-algorithms-visualizer/static/js/runtime-main.a351dd8d.js",
     "runtime-main.js.map": "/Sorting-algorithms-visualizer/static/js/runtime-main.a351dd8d.js.map",
     "static/js/2.33cd8ef4.chunk.js": "/Sorting-algorithms-visualizer/static/js/2.33cd8ef4.chunk.js",
     "static/js/2.33cd8ef4.chunk.js.map": "/Sorting-algorithms-visualizer/static/js/2.33cd8ef4.chunk.js.map",
     "index.html": "/Sorting-algorithms-visualizer/index.html",
-    "precache-manifest.85097fe94a4963e2a2e534acb9ef8c4b.js": "/Sorting-algorithms-visualizer/precache-manifest.85097fe94a4963e2a2e534acb9ef8c4b.js",
+    "precache-manifest.1c90bfea7ae3afdf235c15e27cc3718d.js": "/Sorting-algorithms-visualizer/precache-manifest.1c90bfea7ae3afdf235c15e27cc3718d.js",
     "service-worker.js": "/Sorting-algorithms-visualizer/service-worker.js",
     "static/js/2.33cd8ef4.chunk.js.LICENSE": "/Sorting-algorithms-visualizer/static/js/2.33cd8ef4.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.a351dd8d.js",
     "static/js/2.33cd8ef4.chunk.js",
-    "static/js/main.1f00f729.chunk.js"
+    "static/js/main.3cf28e86.chunk.js"
   ]
 }
