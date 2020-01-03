@@ -1,80 +1,40 @@
+import { addChange, addSwap, addRevert } from './helpers';
+
 function doMerge(array, startIndex, middleIndex, endIndex, auxiliaryArray, animations) {
   let k = startIndex;
   let i = startIndex;
   let j = middleIndex + 1;
-  let animation;
   while (i <= middleIndex && j <= endIndex) {
     // change color
-    animation = {
-      operation: 'change-color',
-      positions: [i, j]
-    };
-    animations.push(animation);
+    addChange(animations, [i, j]);
     // revert color
-    animation = {
-      operation: 'revert-color',
-      positions: [i, j]
-    };
-    animations.push(animation);
-
+    addRevert(animations, [i, j]);
+    addSwap(animations, [k, auxiliaryArray[i]]);
     if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-      // rewrite value
-      animation = {
-        operation: 'swap',
-        positions: [k, auxiliaryArray[i]]
-      };
-      animations.push(animation);
+      addSwap(animations, [k, auxiliaryArray[i]]);
       array[k++] = auxiliaryArray[i++];
     } else {
       // rewrite value
-      animation = {
-        operation: 'swap',
-        positions: [k, auxiliaryArray[j]]
-      };
-      animations.push(animation);
+      addSwap(animations, [k, auxiliaryArray[j]]);
       array[k++] = auxiliaryArray[j++];
     }
   }
   while (i <= middleIndex) {
     // change color
-    animation = {
-      operation: 'change-color',
-      positions: [i, i]
-    };
-    animations.push(animation);
+    addChange(animations, [i, i]);
     // revert color
-    animation = {
-      operation: 'revert-color',
-      positions: [i, i]
-    };
-    animations.push(animation);
+    addRevert(animations, [i, i]);
     // rewrite value
-    animation = {
-      operation: 'swap',
-      positions: [k, auxiliaryArray[i]]
-    };
-    animations.push(animation);
+    addSwap(animations, [k, auxiliaryArray[i]]);
     array[k++] = auxiliaryArray[i++];
   }
   while (j <= endIndex) {
     // change color
-    animation = {
-      operation: 'change-color',
-      positions: [j, j]
-    };
-    animations.push(animation);
+    addChange(animations, [j, j]);
     // revert color
-    animation = {
-      operation: 'revert-color',
-      positions: [j, j]
-    };
-    animations.push(animation);
+    addRevert(animations, [j, j]);
     // rewrite value;
-    animation = {
-      operation: 'swap',
-      positions: [k, auxiliaryArray[j]]
-    };
-    animations.push(animation);
+    addSwap(animations, [k, auxiliaryArray[j]]);
     array[k++] = auxiliaryArray[j++];
   }
 }

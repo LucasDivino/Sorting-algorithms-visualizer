@@ -1,16 +1,10 @@
+import { addChange, addSwap, addRevert } from './helpers';
+
 let arrayLength;
 
 function swap(array, leftIndex, rightIndex, animations) {
-  let animation = {
-    operation: 'swap',
-    positions: [leftIndex, array[rightIndex]]
-  };
-  animations.push(animation);
-  animation = {
-    operation: 'swap',
-    positions: [rightIndex, array[leftIndex]]
-  };
-  animations.push(animation);
+  addSwap(animations, [leftIndex, array[rightIndex]]);
+  addSwap(animations, [rightIndex, array[leftIndex]]);
   const temp = array[leftIndex];
   array[leftIndex] = array[rightIndex];
   array[rightIndex] = temp;
@@ -19,7 +13,6 @@ function swap(array, leftIndex, rightIndex, animations) {
 function heapRoot(array, i, animations) {
   const left = 2 * i + 1;
   const right = 2 * i + 2;
-  let animation;
   let max = i;
 
   if (left < arrayLength && array[left] > array[max]) {
@@ -31,16 +24,8 @@ function heapRoot(array, i, animations) {
   }
 
   if (max !== i) {
-    animation = {
-      operation: 'change-color',
-      positions: [i, max]
-    };
-    animations.push(animation);
-    animation = {
-      operation: 'revert-color',
-      positions: [i, max]
-    };
-    animations.push(animation);
+    addChange(animations, [i, max]);
+    addRevert(animations, [i, max]);
     swap(array, i, max, animations);
     heapRoot(array, max, animations);
   }
