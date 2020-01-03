@@ -79,22 +79,26 @@ function SortingVisualizer(props) {
   }
 
   function AnimateMergesort() {
-    const animations = getMergeSortAnimations(array);
+    const arrayCopy = [...array];
+    const animations = getMergeSortAnimations(arrayCopy);
     animate(animations);
   }
 
   function AnimateBubbleSort() {
-    const animations = getBubbleSortAnimations(array);
+    const arrayCopy = [...array];
+    const animations = getBubbleSortAnimations(arrayCopy);
     animate(animations);
   }
 
   function AnimateQuickSort() {
-    const animations = getQuickSortAnimations(array);
+    const arrayCopy = [...array];
+    const animations = getQuickSortAnimations(arrayCopy);
     animate(animations);
   }
 
   function AnimateHeapSort() {
-    const animations = getHeapSortAnimations(array);
+    const arrayCopy = [...array];
+    const animations = getHeapSortAnimations(arrayCopy);
     animate(animations);
   }
 

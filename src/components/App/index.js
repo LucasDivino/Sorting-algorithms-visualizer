@@ -2,7 +2,6 @@ import React from 'react';
 import { withStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import Box from '@material-ui/core/Box';
@@ -80,43 +79,41 @@ class App extends React.Component {
     return (
       <>
         <AppBar position="static" className={classes.appBarColor}>
-          <Container maxWidth="lg">
-            <Toolbar>
-              <Typography align="center" color="secondary" variant="h5" className={classes.title}>
-                Sorting Visualizer
-              </Typography>
-              <Box className={classes.sliderBox}>
-                <Typography className={classes.sliderText}>Array Size</Typography>
-                <Slider
-                  min={4}
-                  className={classes.slider}
-                  onChange={(e, value) => this.handleSliderChange(value, 'arraySize')}
-                  max={250}
-                  color="secondary"
-                  defaultValue={250}
-                />
-              </Box>
-              <Box className={classes.sliderBox}>
-                <Typography className={classes.sliderText}>Animation Speed</Typography>
-                <Slider
-                  onChange={(e, value) => this.handleSliderChange(value, 'speed')}
-                  className={classes.slider}
-                  max={100}
-                  color="secondary"
-                  defaultValue={100}
-                />
-              </Box>
-              <Button
-                className={classes.buttonReset}
-                onClick={() => this.resetArray()}
-                variant="contained"
+          <Toolbar>
+            <Typography align="center" color="secondary" variant="h5" className={classes.title}>
+              Sorting Visualizer
+            </Typography>
+            <Box className={classes.sliderBox}>
+              <Typography className={classes.sliderText}>Array Size</Typography>
+              <Slider
+                min={4}
+                className={classes.slider}
+                onChange={(e, value) => this.handleSliderChange(value, 'arraySize')}
+                max={250}
                 color="secondary"
-                disabled={this.props.isRunning}
-              >
-                reset
-              </Button>
-            </Toolbar>
-          </Container>
+                defaultValue={250}
+              />
+            </Box>
+            <Box className={classes.sliderBox}>
+              <Typography className={classes.sliderText}>Animation Speed</Typography>
+              <Slider
+                onChange={(e, value) => this.handleSliderChange(value, 'speed')}
+                className={classes.slider}
+                max={100}
+                color="secondary"
+                defaultValue={100}
+              />
+            </Box>
+            <Button
+              className={classes.buttonReset}
+              onClick={() => this.resetArray()}
+              variant="contained"
+              color="secondary"
+              disabled={this.props.isRunning}
+            >
+              reset
+            </Button>
+          </Toolbar>
         </AppBar>
         <SortingVisualizer array={this.state.array} speed={this.state.speed} />
       </>
