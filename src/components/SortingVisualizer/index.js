@@ -11,6 +11,7 @@ import getMergeSortAnimations from '../../SortingAlgotithms/mergesort';
 import getBubbleSortAnimations from '../../SortingAlgotithms/bubblesort';
 import getQuickSortAnimations from '../../SortingAlgotithms/quicksort';
 import getHeapSortAnimations from '../../SortingAlgotithms/heapsort';
+import getShellSortAnimations from '../../SortingAlgotithms/shellsort';
 
 const PRIMARY_COLOR = '#408050';
 
@@ -102,6 +103,12 @@ function SortingVisualizer(props) {
     animate(animations);
   }
 
+  function animateShellSort() {
+    const arrayCopy = [...array];
+    const animations = getShellSortAnimations(arrayCopy);
+    animate(animations);
+  }
+
   return (
     <>
       <Box className={classes.arrayConatainer}>
@@ -151,6 +158,16 @@ function SortingVisualizer(props) {
           onClick={AnimateHeapSort}
         >
           heapsort
+        </Button>
+
+        <Button
+          disabled={props.isRunning}
+          className={classes.buttonSpacing}
+          variant="contained"
+          color="primary"
+          onClick={animateShellSort}
+        >
+          shell
         </Button>
       </Box>
     </>
