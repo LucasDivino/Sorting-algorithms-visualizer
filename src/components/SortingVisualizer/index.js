@@ -14,6 +14,7 @@ import getQuickSortAnimations from '../../SortingAlgotithms/quicksort';
 import getHeapSortAnimations from '../../SortingAlgotithms/heapsort';
 import getShellSortAnimations from '../../SortingAlgotithms/shellsort';
 import getInsertionSortAnimations from '../../SortingAlgotithms/insertionsort';
+import getSelectionSortAnimations from '../../SortingAlgotithms/selectionsort';
 
 const PRIMARY_COLOR = '#408050';
 
@@ -109,6 +110,12 @@ function SortingVisualizer(props) {
     animate(animations);
   }
 
+  function animateSelectionSort() {
+    const arrayCopy = [...array];
+    const animations = getSelectionSortAnimations(arrayCopy);
+    animate(animations);
+  }
+
   return (
     <>
       <Box className={classes.arrayConatainer}>
@@ -180,6 +187,16 @@ function SortingVisualizer(props) {
             onClick={animateInsertionSort}
           >
             insertionsort
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            disabled={props.isRunning}
+            variant="contained"
+            color="primary"
+            onClick={animateSelectionSort}
+          >
+            selectionsort
           </Button>
         </Grid>
       </Grid>
