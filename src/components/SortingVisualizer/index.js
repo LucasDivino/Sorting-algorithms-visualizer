@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 // redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -31,14 +32,6 @@ const styles = () => ({
     marginRight: 2,
     backgroundColor: PRIMARY_COLOR,
     width: 100
-  },
-  buttonsBar: {
-    margin: 30,
-    display: 'flex',
-    justifyContent: 'center'
-  },
-  buttonSpacing: {
-    marginRight: 40
   }
 });
 
@@ -121,55 +114,58 @@ function SortingVisualizer(props) {
           />
         ))}
       </Box>
-      <Box className={classes.buttonsBar}>
-        <Button
-          disabled={props.isRunning}
-          className={classes.buttonSpacing}
-          variant="contained"
-          color="primary"
-          onClick={AnimateMergesort}
-        >
-          MergeSort
-        </Button>
-        <Button
-          disabled={props.isRunning}
-          variant="contained"
-          className={classes.buttonSpacing}
-          color="primary"
-          onClick={AnimateBubbleSort}
-        >
-          BubbleSort
-        </Button>
-        <Button
-          disabled={props.isRunning}
-          className={classes.buttonSpacing}
-          variant="contained"
-          color="primary"
-          onClick={AnimateQuickSort}
-        >
-          quicksort
-        </Button>
-
-        <Button
-          disabled={props.isRunning}
-          className={classes.buttonSpacing}
-          variant="contained"
-          color="primary"
-          onClick={AnimateHeapSort}
-        >
-          heapsort
-        </Button>
-
-        <Button
-          disabled={props.isRunning}
-          className={classes.buttonSpacing}
-          variant="contained"
-          color="primary"
-          onClick={animateShellSort}
-        >
-          shell
-        </Button>
-      </Box>
+      <Grid container direction="row" justify="center" spacing={4}>
+        <Grid item>
+          <Button
+            disabled={props.isRunning}
+            variant="contained"
+            color="primary"
+            onClick={AnimateMergesort}
+          >
+            MergeSort
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            disabled={props.isRunning}
+            variant="contained"
+            color="primary"
+            onClick={AnimateBubbleSort}
+          >
+            BubbleSort
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            disabled={props.isRunning}
+            variant="contained"
+            color="primary"
+            onClick={AnimateQuickSort}
+          >
+            quicksort
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            disabled={props.isRunning}
+            variant="contained"
+            color="primary"
+            onClick={AnimateHeapSort}
+          >
+            heapsort
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            disabled={props.isRunning}
+            variant="contained"
+            color="primary"
+            onClick={animateShellSort}
+          >
+            shellsort
+          </Button>
+        </Grid>
+      </Grid>
     </>
   );
 }
