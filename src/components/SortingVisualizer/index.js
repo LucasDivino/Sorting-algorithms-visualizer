@@ -75,44 +75,37 @@ function SortingVisualizer(props) {
   }
 
   function AnimateMergesort() {
-    const arrayCopy = [...array];
-    const animations = getMergeSortAnimations(arrayCopy);
+    const animations = getMergeSortAnimations(array);
     animate(animations);
   }
 
   function AnimateBubbleSort() {
-    const arrayCopy = [...array];
-    const animations = getBubbleSortAnimations(arrayCopy);
+    const animations = getBubbleSortAnimations(array);
     animate(animations);
   }
 
   function AnimateQuickSort() {
-    const arrayCopy = [...array];
-    const animations = getQuickSortAnimations(arrayCopy);
+    const animations = getQuickSortAnimations(array);
     animate(animations);
   }
 
   function AnimateHeapSort() {
-    const arrayCopy = [...array];
-    const animations = getHeapSortAnimations(arrayCopy);
+    const animations = getHeapSortAnimations(array);
     animate(animations);
   }
 
   function animateShellSort() {
-    const arrayCopy = [...array];
-    const animations = getShellSortAnimations(arrayCopy);
+    const animations = getShellSortAnimations(array);
     animate(animations);
   }
 
   function animateInsertionSort() {
-    const arrayCopy = [...array];
-    const animations = getInsertionSortAnimations(arrayCopy);
+    const animations = getInsertionSortAnimations(array);
     animate(animations);
   }
 
   function animateSelectionSort() {
-    const arrayCopy = [...array];
-    const animations = getSelectionSortAnimations(arrayCopy);
+    const animations = getSelectionSortAnimations(array);
     animate(animations);
   }
 
