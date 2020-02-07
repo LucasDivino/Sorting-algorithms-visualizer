@@ -48,7 +48,7 @@ function SortingVisualizer(props) {
     });
   }
 
-  async function animate(animations) {
+  async function animate(animations, arrayCopy) {
     props.setIsRunning(true);
     const promises = animations.map(async (element, index) => {
       const arrayBars = document.getElementsByClassName(classes.arrayElement);
@@ -71,42 +71,50 @@ function SortingVisualizer(props) {
       });
     });
     await Promise.all(promises);
+    props.setArray(arrayCopy);
     props.setIsRunning(false);
   }
 
   function AnimateMergesort() {
-    const animations = getMergeSortAnimations(array);
-    animate(animations);
+    const arrayCopy = [...array];
+    const animations = getMergeSortAnimations(arrayCopy);
+    animate(animations, arrayCopy);
   }
 
   function AnimateBubbleSort() {
-    const animations = getBubbleSortAnimations(array);
-    animate(animations);
+    const arrayCopy = [...array];
+    const animations = getBubbleSortAnimations(arrayCopy);
+    animate(animations, arrayCopy);
   }
 
   function AnimateQuickSort() {
-    const animations = getQuickSortAnimations(array);
-    animate(animations);
+    const arrayCopy = [...array];
+    const animations = getQuickSortAnimations(arrayCopy);
+    animate(animations, arrayCopy);
   }
 
   function AnimateHeapSort() {
-    const animations = getHeapSortAnimations(array);
-    animate(animations);
+    const arrayCopy = [...array];
+    const animations = getHeapSortAnimations(arrayCopy);
+    animate(animations, arrayCopy);
   }
 
   function animateShellSort() {
-    const animations = getShellSortAnimations(array);
-    animate(animations);
+    const arrayCopy = [...array];
+    const animations = getShellSortAnimations(arrayCopy);
+    animate(animations, arrayCopy);
   }
 
   function animateInsertionSort() {
-    const animations = getInsertionSortAnimations(array);
-    animate(animations);
+    const arrayCopy = [...array];
+    const animations = getInsertionSortAnimations(arrayCopy);
+    animate(animations, arrayCopy);
   }
 
   function animateSelectionSort() {
-    const animations = getSelectionSortAnimations(array);
-    animate(animations);
+    const arrayCopy = [...array];
+    const animations = getSelectionSortAnimations(arrayCopy);
+    animate(animations, arrayCopy);
   }
 
   return (

@@ -70,6 +70,10 @@ class App extends React.Component {
     this.resetArray();
   }
 
+  setArray = newArray => {
+    this.setState({ array: newArray });
+  };
+
   handleSliderChange(value, prop) {
     if (prop === 'speed') {
       value = 30 - value;
@@ -132,7 +136,11 @@ class App extends React.Component {
             </Button>
           </Toolbar>
         </AppBar>
-        <SortingVisualizer array={this.state.array} speed={this.state.speed} />
+        <SortingVisualizer
+          array={this.state.array}
+          speed={this.state.speed}
+          setArray={this.setArray}
+        />
       </>
     );
   }
